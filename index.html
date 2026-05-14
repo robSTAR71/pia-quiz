@@ -246,7 +246,7 @@ function showResult() {
     el.textContent = displayed;
   }, 120);
   var starsEl = document.getElementById('result-stars');
-  var litStars = Math.round((score / 10) * 5);
+  var litStars = Math.round((score / questions.length) * 5);
   starsEl.innerHTML = '';
   for (var i = 0; i < 5; i++) {
     var s = document.createElement('span');
@@ -255,16 +255,16 @@ function showResult() {
     starsEl.appendChild(s);
   }
   var msgs = [
-    { max:3,  msg:"Du kennst Pia erst seit heute.",        sub:"Aber immerhin bist du hier! Das zählt auch." },
-    { max:6,  msg:"Guter Freund — aber da geht noch was.", sub:"Mit etwas mehr Aufmerksamkeit nächstes Jahr klappt es besser." },
-    { max:9,  msg:"Echter Pia-Fan!",                       sub:"Du hast gut aufgepasst. Pia ist stolz auf dich." },
-    { max:10, msg:"Perfekt! 10 von 10.",                   sub:"Entweder du bist ihre Mutter — oder ein Stalker. Beides ist irgendwie rührend." }
+    { max:2,  msg:"Du kennst Pia erst seit heute.",        sub:"Aber immerhin bist du hier! Das zählt auch." },
+    { max:4,  msg:"Guter Freund — aber da geht noch was.", sub:"Mit etwas mehr Aufmerksamkeit nächstes Jahr klappt es besser." },
+    { max:5,  msg:"Echter Pia-Fan!",                       sub:"Du hast gut aufgepasst. Pia ist stolz auf dich." },
+    { max:6,  msg:"Perfekt! 6 von 6.",                     sub:"Entweder du bist ihre Mutter — oder ein Stalker. Beides ist irgendwie rührend." }
   ];
   var m = msgs[0];
   for (var i = 0; i < msgs.length; i++) { if (score <= msgs[i].max) { m = msgs[i]; break; } }
   document.getElementById('result-msg').textContent = m.msg;
   document.getElementById('result-sub').textContent = m.sub;
-  if (score >= 7) launchConfetti();
+  if (score >= 5) launchConfetti();
 }
 
 function restartQuiz() {

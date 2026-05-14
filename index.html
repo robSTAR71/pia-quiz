@@ -150,7 +150,7 @@ body { font-family: 'Plus Jakarta Sans', Georgia, sans-serif; background: var(--
   </div>
   <div class="result-stars" id="result-stars"></div>
   <div class="result-score" id="result-score">0</div>
-  <div class="result-denom">von 6 Punkten</div>
+  <div class="result-denom">von 8 Punkten</div>
   <div class="result-divider"></div>
   <div class="result-msg" id="result-msg"></div>
   <p class="result-sub" id="result-sub"></p>
@@ -159,12 +159,14 @@ body { font-family: 'Plus Jakarta Sans', Georgia, sans-serif; background: var(--
 
 <script>
 var questions = [
-  { q: "Pia wurde an einem ganz besonderen Wochentag geboren. Welchem?", opts: ["Sonntag","Montag","Freitag","Mittwoch"], correct: 1, explain: "<strong>Montag — Pfingstmontag!</strong> Pia kam als Feiertags-Edition auf die Welt. Österreich hatte frei. Zufall? Wir glauben nicht." },
+  { q: "Pia wurde an einem ganz besonderen Wochentag geboren. Welchem?", opts: ["Sonntag","Montag","Freitag","Mittwoch"], correct: 1, explain: "<strong>Montag!</strong> Und zwar ein ganz normaler Montag — kein Feiertag, kein Ausrede. Die Welt musste einfach arbeiten, während Pia ankam." },
   { q: "Zu welcher Uhrzeit wurde Pia geboren?", opts: ["12:00 Uhr mittags","21:15 Uhr abends","5:37 Uhr früh","8:02 Uhr morgens"], correct: 2, explain: "<strong>5:37 Uhr!</strong> Mitten in der Nacht — kein Wunder, dass sie heute noch am liebsten ausschläft." },
   { q: "Pia hat ein treues Kuscheltier. Was ist es?", opts: ["Ein Hase","Ein Bär","Ein Einhorn","Ein Affe"], correct: 3, explain: "<strong>Ein Affe!</strong> Er hat schon mehr Geburtstage überlebt als mancher Gast hier im Raum." },
   { q: "Wie alt wird Pia heute?", opts: ["14","15","16","17"], correct: 2, explain: "<strong>16 — Sweet Sixteen!</strong> Offiziell alt genug für Moped, Radler und noch mehr Verantwortung." },
   { q: "Welche Schuhgröße hat Pia?", opts: ["37","38","39","41"], correct: 2, explain: "<strong>Größe 39!</strong> Solide Mitte — weder zu klein für die großen Abenteuer, noch zu groß für die Tanzfläche." },
-  { q: "Wenn Pia um 5:37 Uhr geboren wurde — wie viele Minuten nach Mitternacht war das?", opts: ["237 Minuten","300 Minuten","337 Minuten","357 Minuten"], correct: 2, explain: "<strong>337 Minuten</strong> — 5 x 60 + 37 = 337. Wer das im Kopf gerechnet hat, bekommt einen Bonuspunkt fürs Nerdsein." }
+  { q: "Wenn Pia um 5:37 Uhr geboren wurde — wie viele Minuten nach Mitternacht war das?", opts: ["237 Minuten","300 Minuten","337 Minuten","357 Minuten"], correct: 2, explain: "<strong>337 Minuten</strong> — 5 x 60 + 37 = 337. Wer das im Kopf gerechnet hat, bekommt einen Bonuspunkt fürs Nerdsein." },
+  { q: "Welches Sternzeichen hat Pia?", opts: ["Widder","Stier","Zwillinge","Schütze"], correct: 1, explain: "<strong>Stier!</strong> 17. Mai — mitten im Stier-Zeichen (20. April bis 20. Mai). Typische Eigenschaften: bodenständig, genussvoll, loyal. Passt?" },
+  { q: "Was für ein Mensch ist Pia?", opts: ["Frühaufsteher","Mittagsschläfer","Nachteule","Powernapper"], correct: 2, explain: "<strong>Nachteule!</strong> Kein Wunder bei einer Geburtszeit von 5:37 Uhr — sie ist einfach in ihrem natürlichen Element, wenn alle anderen schlafen." }
 ];
 
 var score = 0;
@@ -255,16 +257,16 @@ function showResult() {
     starsEl.appendChild(s);
   }
   var msgs = [
-    { max:2,  msg:"Du kennst Pia erst seit heute.",        sub:"Aber immerhin bist du hier! Das zählt auch." },
-    { max:4,  msg:"Guter Freund — aber da geht noch was.", sub:"Mit etwas mehr Aufmerksamkeit nächstes Jahr klappt es besser." },
-    { max:5,  msg:"Echter Pia-Fan!",                       sub:"Du hast gut aufgepasst. Pia ist stolz auf dich." },
-    { max:6,  msg:"Perfekt! 6 von 6.",                     sub:"Entweder du bist ihre Mutter — oder ein Stalker. Beides ist irgendwie rührend." }
+    { max:3,  msg:"Du kennst Pia erst seit heute.",        sub:"Aber immerhin bist du hier! Das zählt auch." },
+    { max:7,  msg:"Guter Freund — aber da geht noch was.", sub:"Mit etwas mehr Aufmerksamkeit nächstes Jahr klappt es besser." },
+    { max:7,  msg:"Echter Pia-Fan!",                       sub:"Du hast gut aufgepasst. Pia ist stolz auf dich." },
+    { max:8,  msg:"Perfekt! 8 von 8.",                     sub:"Entweder du bist ihre Mutter — oder ein Stalker. Beides ist irgendwie rührend." }
   ];
   var m = msgs[0];
   for (var i = 0; i < msgs.length; i++) { if (score <= msgs[i].max) { m = msgs[i]; break; } }
   document.getElementById('result-msg').textContent = m.msg;
   document.getElementById('result-sub').textContent = m.sub;
-  if (score >= 5) launchConfetti();
+  if (score >= 6) launchConfetti();
 }
 
 function restartQuiz() {
